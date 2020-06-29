@@ -1,5 +1,6 @@
 ﻿using TabuleiroNamespace;
 using System;
+using System.Drawing;
 
 namespace ProjetoXadrez
 {
@@ -8,6 +9,8 @@ namespace ProjetoXadrez
         static void Main(string[] args)
         {
             Tabuleiro tabuleiro = new Tabuleiro(8, 8);
+
+            Tela.ImprimirTabuleiro(tabuleiro);
         }
     }
 }
