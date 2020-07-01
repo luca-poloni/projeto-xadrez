@@ -1,4 +1,6 @@
-﻿namespace TabuleiroNamespace
+﻿using System.Runtime.InteropServices.ComTypes;
+
+namespace TabuleiroNamespace
 {
     class Peca
     {
@@ -13,6 +15,11 @@
             Cor = cor;
             Tabuleiro = tabuleiro;
             QuantidadeMovimentos = 0;
+        }
+
+        public void IncrementarQuantidadeDeMovimentos()
+        {
+            QuantidadeMovimentos++;
         }
     }
 }
