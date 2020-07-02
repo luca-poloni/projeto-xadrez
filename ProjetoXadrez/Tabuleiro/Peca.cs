@@ -1,8 +1,6 @@
-﻿using System.Runtime.InteropServices.ComTypes;
-
-namespace TabuleiroNamespace
+﻿namespace TabuleiroNamespace
 {
-    class Peca
+    abstract class Peca
     {
         public Posicao Posicao { get; set; }
         public Cor Cor { get; protected set; }
@@ -21,5 +19,7 @@ namespace TabuleiroNamespace
         {
             QuantidadeMovimentos++;
         }
+
+        public abstract bool[,] MovimentosPossiveis();
     }
 }
