@@ -16,7 +16,6 @@ namespace ProjetoXadrez
                 {
                     try
                     {
-                        Console.Clear();
                         Tela.ImprimirPartida(partida);
 
                         Console.Write("\nOrigem: ");
@@ -40,6 +39,8 @@ namespace ProjetoXadrez
                         Console.ReadLine();
                     }
                 }
+
+                Tela.ImprimirPartida(partida);
             }
             catch(TabuleiroException e)
             {
