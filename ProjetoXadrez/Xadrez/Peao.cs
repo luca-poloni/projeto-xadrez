@@ -99,7 +99,7 @@ namespace XadrezNamespace
 
         public override string ToString()
         {
-            return "C";
+            return "P";
         }
     }
 }
