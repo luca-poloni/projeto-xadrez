@@ -108,13 +108,6 @@ namespace XadrezNamespace
 
             return mat;
         }
-
-        private bool PodeMover(Posicao pos)
-        {
-            Peca p = Tabuleiro.Peca(pos);
-            return p == null || p.Cor != Cor;
-        }
-
         private bool ExisteInimigo(Posicao pos)
         {
             Peca p = Tabuleiro.Peca(pos);

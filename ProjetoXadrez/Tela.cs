@@ -117,11 +117,38 @@ namespace ProjetoXadrez
 
         public static PosicaoXadrez LerPosicaoXadrez()
         {
-            string s = Console.ReadLine();
-            char coluna = s[0];
-            int linha = int.Parse(s[1] + "");
+            char coluna;
+            int linha;
+
+            do
+            {
+                string s = Console.ReadLine().ToLower();
+
+                if(!ValidaInputPosicao(s))
+                {
+                    Console.Write("\nPosição inválida!, digite a posição novamente: ");
+                    continue;
+                }
+
+                coluna = s[0];
+                linha = int.Parse(s[1] + "");
+
+                break;
+            } while (true);
+
 
             return new PosicaoXadrez(coluna, linha);
+        }
+
+        private static bool ValidaInputPosicao(string s)
+        {
+            if ((s.Length != 2) || (s[0] != 'a' && s[0] != 'b' && s[0] != 'c' && s[0] != 'd' && s[0] != 'e' && s[0] != 'f' && s[0] != 'g' && s[0] != 'h')
+                    || (s[1] != '1' && s[1] != '2' && s[1] != '3' && s[1] != '4' && s[1] != '5' && s[1] != '6' && s[1] != '7' && s[1] != '8'))
+            {
+                return false;
+            }
+            else
+                return true;
         }
     }
 }

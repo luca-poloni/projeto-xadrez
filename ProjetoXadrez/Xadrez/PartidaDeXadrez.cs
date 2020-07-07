@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TabuleiroNamespace;
 
 namespace XadrezNamespace
@@ -161,9 +162,41 @@ namespace XadrezNamespace
                     p = Tabuleiro.RetirarPeca(destino);
                     Pecas.Remove(p);
 
-                    Peca dama = new Dama(p.Cor, Tabuleiro);
-                    Tabuleiro.ColocarPeca(dama, destino);
-                    Pecas.Add(dama);
+                    Peca novaPeca;
+
+                    do
+                    {
+                        Console.Write("Digite a peça a ser transformada: ");
+                        string newPeca = Console.ReadLine().ToLower();
+
+                        if (!ValidaPecaTransformada(newPeca))
+                        {
+                            Console.Write("\nPeça inválida!, digite o nome da peça novamente: ");
+                            continue;
+                        }
+
+                        if (newPeca.Equals("rainha"))
+                        {
+                            novaPeca = new Dama(p.Cor, Tabuleiro);
+                        }
+                        else if (newPeca.Equals("torre"))
+                        {
+                            novaPeca = new Torre(p.Cor, Tabuleiro);
+                        }
+                        else if(newPeca.Equals("bispo"))
+                        {
+                            novaPeca = new Bispo(p.Cor, Tabuleiro);
+                        }
+                        else
+                        {
+                            novaPeca = new Cavalo(p.Cor, Tabuleiro);
+                        }
+
+                        break;
+                    } while (true);
+
+                    Tabuleiro.ColocarPeca(novaPeca, destino);
+                    Pecas.Add(novaPeca);
                 }
             }
 
@@ -185,6 +218,14 @@ namespace XadrezNamespace
                 VulneravelEnPassant = p;
             else
                 VulneravelEnPassant = null;
+        }
+
+        private bool ValidaPecaTransformada(string peca)
+        {
+            if (peca != "rainha" && peca != "torre" && peca != "bispo" && peca != "cavalo")
+                return false;
+            else
+                return true;
         }
 
         private void MudaJogador()
